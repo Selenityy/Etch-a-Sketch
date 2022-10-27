@@ -1,17 +1,28 @@
 const container = document.getElementById("container");
-let row = document.createElement("row");
-container.appendChild(row);
+let rows = [];
 
-function createRow() {
+function createDiv(rowNum) {
+    // let row = document.createElement("row");
+    // row.classList.add("row");
     let newDiv = document.createElement("div");
-    newDiv.style.backgroundColor = "white";
-    newDiv.style.border = "1px solid #000000";
-    newDiv.style.height = "100px";
-    newDiv.style.width = "100px";
-    row.appendChild(newDiv);
+    newDiv.classList.add("box");
+    // row.appendChild(newDiv);
+    rows[rowNum].appendChild(newDiv);
 }
 
-for (let i = 1; i <17; i++) createRow(i); 
+function createRows() {
+    for (let j = 1; j < 17; j++) {
+        rows[j] = document.createElement(`row${j}`)
+        rows[j].classList.add("rows");
+        container.appendChild(rows[j]);
+        for (let i = 1; i < 17; i++) {
+            createDiv(j); 
+        }
+    }
+}
+
+createRows();
+
 
 // create a 16x16 grid of divs
 // create a div
