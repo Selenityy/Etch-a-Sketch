@@ -1,7 +1,5 @@
 body {
     background-color: #8F85B9;
-    height: 960px;
-    width: 960px;
     display: flex;
     flex-direction: column;
     flex: 0 1 auto;
@@ -18,12 +16,16 @@ h1 {
     font-size: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
+    align-self: center;
 }
 
 #container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .rows {
@@ -33,7 +35,7 @@ h1 {
 
 div {
     background-color: white;
-    border: 1px solid #8F85B9;
+    /* border: 1px solid #8F85B9; */
     height: 100px;
     width: 100px;
 }
@@ -45,7 +47,9 @@ div {
     background-color: #F3DFEA;
     display: flex;
     text-align: center;
+    align-self: center;
     transition-duration: 0.3s;
+    margin-bottom: 20px;
 }
 
 .button:hover {
