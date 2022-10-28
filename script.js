@@ -80,5 +80,3 @@ function repeat() {
 
 // runs the prompt first then the game
 userPrompt();
-
-
