@@ -6,25 +6,52 @@ let userRow, userColumn;
 // when repeat button is clicked, starts a new game
 document.querySelector("button").addEventListener("click", repeat);
 
-// prompts user for rows and columns, checks if integer and within the max width and height
+// prompts user for rows and columns, if rows work it moves onto columns
 function userPrompt() {
-    userRow = parseInt(prompt("How many rows?", ""));
-    userColumn = parseInt(prompt("How many columns?", ""));
-    // userRow = parseInt(x);
-    // userColumn = parseInt(y);
-    if (!Number.isInteger(userRow) || !Number.isInteger(userColumn)){ 
-        alert("Please only input integers.");
-        repeat();
-    } 
-    if (userRow > 100 || userRow < 1) {
-        alert("Please pick a number between 1 - 100.");
-        repeat();
-    } 
-    if (userColumn > 100 || userColumn < 1) {
-        alert("Please pick a number between 1 - 100.");
-        repeat();
+    function rowInput() {
+        let userInputRow = prompt("How many rows?","");
+        userRow = parseInt(userInputRow);
+        let result = inputValidation(userInputRow, userRow);
+
+        if (result === -1) {
+            return;
+        } else if (result === 0) {
+            rowInput();
+        } else if (result === 1) {
+            columnInput();
+        }
     }
+    rowInput();
+
+    function columnInput() {
+        let userInputColumn = prompt("How many columns?", "");
+        userColumn = parseInt(userInputColumn);
+
+        let result = inputValidation(userInputColumn, userColumn);
+
+        if (result === -1) {
+            return;
+        } else if (result === 0) {
+            columnInput();
+        }
+    };
 };
+
+// checks if integer and within the max width and height
+function inputValidation(originalUserInput, parsedUserInput) {
+    if (originalUserInput === null) {
+        return -1;
+    }
+    if (!Number.isInteger(parsedUserInput)) {
+        alert("Please only input integers.");
+        return 0;
+    }
+    if (parsedUserInput > 100 || parsedUserInput < 1) {
+        alert("Please pick a number between 1 - 100.");
+        return 0;
+    } 
+    return 1;
+}
 
 function game() {
     // This function will create one div box. Commented out is if we need the boxes nested in an individual class beyond itself
